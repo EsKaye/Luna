@@ -1,78 +1,69 @@
-# 🌌 Celestial Syndicate
+# Celestial Syndicate
 
-A next-generation space simulation game that combines immersive space flight, dynamic FPS combat, and a living, breathing universe.
+A space simulation game inspired by Star Citizen, featuring a mobile companion app for fleet management and mission tracking.
 
-## 🚀 Vision
+## Project Structure
 
-Celestial Syndicate aims to create an immersive space simulation experience where players can:
-- Pilot highly detailed spacecraft with realistic flight mechanics
-- Engage in first-person combat both in space and on planetary surfaces
-- Participate in a dynamic economy and faction system
-- Explore a vast, procedurally generated universe
-- Experience AI-driven storytelling and mission generation
+- `mobile-app/`: React Native mobile companion app
+- `game/`: Main game codebase (coming soon)
 
-## 🛠️ Technical Stack
+## Mobile App Features
 
-- **Game Engine**: Unreal Engine 5
-- **Programming Language**: C++
-- **Asset Creation**: Adobe Firefly, Blender
-- **AI Integration**: Custom AI systems for NPCs, mission generation, and dynamic storytelling
+- 🚀 **Fleet Management**: View and manage your ships, crew, and cargo
+- 🎯 **Mission Tracking**: Monitor active missions and their progress
+- 👤 **Commander Profile**: View your stats, achievements, and progression
+- 💫 **Real-time Updates**: Stay connected with your game progress
 
-## 📁 Project Structure
+## Mobile App Development
 
-```
-celestial-syndicate/
-├── docs/                    # Project documentation
-├── src/                     # Source code
-│   ├── core/               # Core game systems
-│   ├── flight/             # Space flight mechanics
-│   ├── fps/                # First-person combat
-│   ├── economy/            # Economic systems
-│   └── ai/                 # AI systems
-├── assets/                 # Game assets
-│   ├── models/            # 3D models
-│   ├── textures/          # Textures and materials
-│   ├── audio/             # Sound effects and music
-│   └── ui/                # User interface assets
-└── tools/                  # Development tools and utilities
+### Prerequisites
+
+- Node.js (v14 or later)
+- npm or yarn
+- Expo CLI (`npm install -g expo-cli`)
+- iOS Simulator (for Mac) or Android Studio (for Android development)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/M-K-World-Wide/Celesstial.git
+cd Celesstial/mobile-app
 ```
 
-## 🎮 Core Features
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-### Space Flight Simulation
-- Realistic physics-based flight mechanics
-- Detailed ship customization and loadout systems
-- Dynamic space environments and hazards
+3. Start the development server:
+```bash
+npm start
+# or
+yarn start
+```
 
-### First-Person Combat
-- Tactical ground combat
-- Space station and ship boarding mechanics
-- Advanced weapon customization
+4. Run on your preferred platform:
+- Press `i` for iOS simulator
+- Press `a` for Android emulator
+- Scan the QR code with Expo Go app on your physical device
 
-### Living Universe
-- Dynamic economy system
-- AI-driven faction politics
-- Procedural mission generation
-- Persistent world state
+## Contributing
 
-### AI Systems
-- Advanced NPC behavior
-- Dynamic mission generation
-- AI companions and ship AI
-- Procedural storytelling
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 🛠️ Development Setup
+## License
 
-[Development setup instructions will be added as the project progresses]
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📜 License
+## Acknowledgments
 
-[License information to be determined]
-
-## 🤝 Contributing
-
-[Contribution guidelines will be added as the project matures]
-
----
-
-*"In the vast expanse of space, every choice shapes the universe."* 
+- Built with React Native and Expo
+- Inspired by Star Citizen
+- Special thanks to the Celestial Syndicate development team
