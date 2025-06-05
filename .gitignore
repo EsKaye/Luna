@@ -56,4 +56,45 @@ web-build/
 .env.*
 
 # EAS
-eas.json 
+eas.json
+
+# Unreal Engine
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.sln
+*.suo
+*.xcodeproj
+*.xcworkspace
+
+# Mobile Development
+*.apk
+*.aab
+*.ipa
+*.dSYM.zip
+*.dSYM
+.gradle/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Project specific
+*.log
+.env
+.env.local
+.env.*.local 
