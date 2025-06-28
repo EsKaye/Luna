@@ -9,6 +9,7 @@ require('dotenv').config();
 const OpenAI = require('openai');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { HfInference } = require('@huggingface/inference');
+const QuantumService = require('./quantum');
 
 // Initialize AI clients
 const openai = new OpenAI({
@@ -17,6 +18,7 @@ const openai = new OpenAI({
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY);
 const hf = new HfInference(process.env.HUGGINGFACE_API_KEY);
+const quantumService = new QuantumService();
 
 const app = express();
 const server = createServer(app);
@@ -169,6 +171,179 @@ app.post('/api/ai/sentiment-analysis', async (req, res) => {
   } catch (error) {
     console.error('Sentiment Analysis Error:', error);
     res.status(500).json({ success: false, error: 'Failed to analyze sentiment' });
+  }
+});
+
+// Quantum computation endpoint
+app.post('/api/ai/quantum-solve', async (req, res) => {
+  try {
+    const { type, payload } = req.body;
+    let result;
+    switch (type) {
+      case 'braket-circuit':
+        result = await quantumService.runBraketCircuit(payload.circuit, payload.device, payload.shots);
+        break;
+      case 'qiskit-circuit':
+        result = await quantumService.runQiskitCircuit(payload.qasm, payload.backend, payload.shots);
+        break;
+      case 'quantum-optimization':
+        result = await quantumService.quantumInspiredOptimization(payload.problem);
+        break;
+      case 'quantum-random':
+        result = await quantumService.quantumRandom(payload.count);
+        break;
+      default:
+        result = { error: 'Unknown quantum computation type' };
+    }
+    res.json({ success: true, result });
+  } catch (error) {
+    console.error('Quantum Solve Error:', error);
+    res.status(500).json({ success: false, error: 'Quantum computation failed' });
+  }
+});
+
+// Advanced quantum computation endpoints
+app.post('/api/ai/quantum-grovers', async (req, res) => {
+  try {
+    const { database, oracle, shots } = req.body;
+    const result = await quantumService.groversAlgorithm(database, oracle, shots);
+    res.json({ success: true, result });
+  } catch (error) {
+    console.error('Grover\'s Algorithm Error:', error);
+    res.status(500).json({ success: false, error: 'Grover\'s algorithm failed' });
+  }
+});
+
+app.post('/api/ai/quantum-shors', async (req, res) => {
+  try {
+    const { N, shots } = req.body;
+    const result = await quantumService.shorsAlgorithm(N, shots);
+    res.json({ success: true, result });
+  } catch (error) {
+    console.error('Shor\'s Algorithm Error:', error);
+    res.status(500).json({ success: false, error: 'Shor\'s algorithm failed' });
+  }
+});
+
+app.post('/api/ai/quantum-vqe', async (req, res) => {
+  try {
+    const { hamiltonian, ansatz, shots } = req.body;
+    const result = await quantumService.variationalQuantumEigensolver(hamiltonian, ansatz, shots);
+    res.json({ success: true, result });
+  } catch (error) {
+    console.error('VQE Error:', error);
+    res.status(500).json({ success: false, error: 'VQE failed' });
+  }
+});
+
+app.post('/api/ai/quantum-neural-network', async (req, res) => {
+  try {
+    const { trainingData, labels, modelParams } = req.body;
+    const result = await quantumService.quantumNeuralNetwork(trainingData, labels, modelParams);
+    res.json({ success: true, result });
+  } catch (error) {
+    console.error('Quantum Neural Network Error:', error);
+    res.status(500).json({ success: false, error: 'Quantum neural network failed' });
+  }
+});
+
+// Advanced AI endpoints for game features
+app.post('/api/ai/combat-tactics', async (req, res) => {
+  try {
+    const { playerStats, enemyStats, environment, missionType } = req.body;
+    
+    const prompt = `Generate advanced combat tactics for a ${missionType} mission.
+    Player: ${JSON.stringify(playerStats)}
+    Enemy: ${JSON.stringify(enemyStats)}
+    Environment: ${environment}
+    
+    Provide: tactical recommendations, weapon loadout, movement patterns, and risk assessment.`;
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        { role: "system", content: "You are a tactical AI for Celestial Syndicate combat missions." },
+        { role: "user", content: prompt }
+      ],
+      max_tokens: 500,
+      temperature: 0.7
+    });
+
+    res.json({
+      success: true,
+      tactics: JSON.parse(completion.choices[0].message.content)
+    });
+  } catch (error) {
+    console.error('Combat Tactics Error:', error);
+    res.status(500).json({ success: false, error: 'Failed to generate combat tactics' });
+  }
+});
+
+app.post('/api/ai/economy-simulation', async (req, res) => {
+  try {
+    const { marketData, playerActions, timeFrame } = req.body;
+    
+    // Use quantum-inspired optimization for market simulation
+    const marketSimulation = await quantumService.quantumInspiredOptimization({
+      type: 'market_simulation',
+      data: marketData,
+      actions: playerActions,
+      timeframe: timeFrame
+    });
+
+    res.json({
+      success: true,
+      simulation: marketSimulation,
+      predictions: {
+        priceMovements: await generatePricePredictions(marketData),
+        marketTrends: await analyzeMarketTrends(marketData),
+        riskAssessment: await assessMarketRisk(marketData)
+      }
+    });
+  } catch (error) {
+    console.error('Economy Simulation Error:', error);
+    res.status(500).json({ success: false, error: 'Economy simulation failed' });
+  }
+});
+
+app.post('/api/ai/flight-navigation', async (req, res) => {
+  try {
+    const { currentPosition, destination, obstacles, fuel, missionType } = req.body;
+    
+    // Use quantum algorithms for optimal pathfinding
+    const navigationData = {
+      currentPosition,
+      destination,
+      obstacles,
+      fuel,
+      missionType
+    };
+
+    const optimalPath = await quantumService.quantumInspiredOptimization({
+      type: 'pathfinding',
+      data: navigationData
+    });
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        { role: "system", content: "You are a navigation AI for space flight in Celestial Syndicate." },
+        { role: "user", content: `Generate flight plan: ${JSON.stringify(navigationData)}` }
+      ],
+      max_tokens: 300,
+      temperature: 0.6
+    });
+
+    res.json({
+      success: true,
+      optimalPath,
+      flightPlan: JSON.parse(completion.choices[0].message.content),
+      fuelEfficiency: calculateFuelEfficiency(optimalPath, fuel),
+      riskLevel: assessFlightRisk(obstacles, missionType)
+    });
+  } catch (error) {
+    console.error('Flight Navigation Error:', error);
+    res.status(500).json({ success: false, error: 'Flight navigation failed' });
   }
 });
 
