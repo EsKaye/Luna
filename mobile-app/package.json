@@ -21,7 +21,7 @@
     "react-native-screens": "~3.29.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
+    "@babel/core": "^7.28.0",
     "@types/react": "~18.2.45",
     "typescript": "^5.1.3"
   },
