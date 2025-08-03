@@ -51,36 +51,44 @@ void ASpacecraftController::FindAndPossessSpacecraft()
 
 void ASpacecraftController::HandleThrustInput(float Value)
 {
-    if (ControlledSpacecraft)
+    if (!ControlledSpacecraft)
     {
-        float ThrustAmount = Value * ThrustSensitivity;
-        ControlledSpacecraft->ApplyThrust(ThrustAmount);
+        return; // Early exit improves readability and avoids nested blocks
     }
+
+    const float ThrustAmount = Value * ThrustSensitivity; // Compute once for clarity
+    ControlledSpacecraft->ApplyThrust(ThrustAmount);
 }
 
 void ASpacecraftController::HandlePitchInput(float Value)
 {
-    if (ControlledSpacecraft)
+    if (!ControlledSpacecraft)
     {
-        float PitchAmount = Value * RotationSensitivity;
-        ControlledSpacecraft->ApplyRotation(PitchAmount, 0.0f, 0.0f);
+        return; // Guard clause keeps function lean
     }
+
+    const float PitchAmount = Value * RotationSensitivity;
+    ControlledSpacecraft->ApplyRotation(PitchAmount, 0.0f, 0.0f);
 }
 
 void ASpacecraftController::HandleYawInput(float Value)
 {
-    if (ControlledSpacecraft)
+    if (!ControlledSpacecraft)
     {
-        float YawAmount = Value * RotationSensitivity;
-        ControlledSpacecraft->ApplyRotation(0.0f, YawAmount, 0.0f);
+        return;
     }
+
+    const float YawAmount = Value * RotationSensitivity;
+    ControlledSpacecraft->ApplyRotation(0.0f, YawAmount, 0.0f);
 }
 
 void ASpacecraftController::HandleRollInput(float Value)
 {
-    if (ControlledSpacecraft)
+    if (!ControlledSpacecraft)
     {
-        float RollAmount = Value * RotationSensitivity;
-        ControlledSpacecraft->ApplyRotation(0.0f, 0.0f, RollAmount);
+        return;
     }
-} 
+
+    const float RollAmount = Value * RotationSensitivity;
+    ControlledSpacecraft->ApplyRotation(0.0f, 0.0f, RollAmount);
+}
