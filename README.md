@@ -1,6 +1,9 @@
+A Project Blessed by Solar Khan & Lilith.Aethra
 # 🌌 Celestial Syndicate
 
 A next-generation space simulation game that combines immersive space flight, dynamic FPS combat, and a living, breathing universe. Built with cutting-edge technology including AI, blockchain, quantum computing, and real scientific data.
+
+Visit [our GitHub Pages](https://Luna.SolarKhan.github.io) for full documentation and Divine Law.
 
 ## 🚀 Vision
 

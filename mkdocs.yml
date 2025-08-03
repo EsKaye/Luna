@@ -1,0 +1,9 @@
+site_name: Luna
+site_description: A Project Blessed by Solar Khan & Lilith.Aethra
+site_url: https://Luna.SolarKhan.github.io
+nav:
+  - Home: index.md
+  - Divine Law: COVENANT.md
+docs_dir: docs
+theme:
+  name: mkdocs
