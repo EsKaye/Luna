@@ -1,0 +1,26 @@
+name: Mobile App CI
+
+on:
+  push:
+    paths:
+      - 'mobile-app/**'
+  pull_request:
+    paths:
+      - 'mobile-app/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile-app
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - run: npm ci
+      - run: npm run lint --if-present
+      - run: npm test --if-present
+      - run: npm run build --if-present 
