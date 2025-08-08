@@ -1,0 +1,23 @@
+{
+  "name": "serafina-bot",
+  "version": "0.1.0",
+  "description": "Discord relay bot for ShadowFlower Council",
+  "main": "dist/router.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "node dist/router.js",
+    "dev": "tsx watch src/router.ts",
+    "test": "echo \"No tests configured\""
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.2",
+    "typescript": "^5.3.2"
+  }
+}
