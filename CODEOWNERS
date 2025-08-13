@@ -1,0 +1,20 @@
+# Code owners for Luna
+# This file defines who is responsible for different parts of the codebase
+
+# Global owners
+* @EsKaye
+
+# JavaScript files
+*.js @EsKaye
+*.jsx @EsKaye
+
+# Configuration files
+*.json @EsKaye
+*.config.* @EsKaye
+
+# Documentation
+*.md @EsKaye
+docs/ @EsKaye
+
+# GitHub workflows
+.github/ @EsKaye
